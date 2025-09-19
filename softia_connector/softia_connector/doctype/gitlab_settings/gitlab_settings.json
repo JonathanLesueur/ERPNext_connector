@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-19 11:48:14.172516",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "gitlab_settings_section",
+  "gitlab_activation",
+  "enable_gitlab_connection",
+  "gitlab_site_url",
+  "gitlab_authentication_token",
+  "gitlab_api_version"
+ ],
+ "fields": [
+  {
+   "fieldname": "gitlab_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Gitlab Settings"
+  },
+  {
+   "fieldname": "gitlab_activation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gitlab_site_url",
+   "fieldtype": "Data",
+   "label": "Gitlab Site URL"
+  },
+  {
+   "fieldname": "gitlab_authentication_token",
+   "fieldtype": "Data",
+   "label": "Gitlab Authentication Token"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_gitlab_connection",
+   "fieldtype": "Check",
+   "label": "Enable Gitlab Connection"
+  },
+  {
+   "fieldname": "gitlab_api_version",
+   "fieldtype": "Select",
+   "label": "Gitlab API Version",
+   "options": "1\n2\n3\n4\n5"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-09-19 13:15:46.481831",
+ "modified_by": "Administrator",
+ "module": "Softia Connector",
+ "name": "Gitlab Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

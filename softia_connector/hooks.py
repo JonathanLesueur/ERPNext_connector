@@ -5,6 +5,8 @@ app_description = "Connecteur ERPNext vers d\'autres applications Frappe et vers
 app_email = "jlesueur@softia.fr"
 app_license = "mit"
 
+after_install = 'softia_connector.setup.install.custom_install'
+
 # Apps
 # ------------------
 

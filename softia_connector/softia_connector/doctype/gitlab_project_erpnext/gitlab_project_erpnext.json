@@ -1,0 +1,41 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-19 14:35:30.961799",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "gitlab_project",
+  "erpnext_project"
+ ],
+ "fields": [
+  {
+   "fieldname": "gitlab_project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Gitlab Project",
+   "options": "Gitlab Project"
+  },
+  {
+   "fieldname": "erpnext_project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "ERPNext Project",
+   "options": "Project"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-19 15:58:08.179947",
+ "modified_by": "Administrator",
+ "module": "Softia Connector",
+ "name": "Gitlab Project ERPNext",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

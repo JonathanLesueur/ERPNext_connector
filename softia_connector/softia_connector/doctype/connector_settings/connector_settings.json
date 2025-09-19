@@ -1,0 +1,209 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-19 12:25:49.365372",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "gameplan_tab",
+  "gameplan_settings_section",
+  "enable_gameplan_connection",
+  "is_external_gameplan",
+  "section_break_uybd",
+  "gameplan_external_settings",
+  "gameplan_site_url",
+  "gameplan_site_user",
+  "gameplan_site_password",
+  "helpdesk_tab",
+  "helpdesk_settings_section",
+  "enable_helpdesk_connection",
+  "is_external_helpdesk",
+  "section_break_cslm",
+  "helpdesk_site_url",
+  "helpdesk_site_user",
+  "helpdesk_site_password",
+  "drive_tab",
+  "drive_settings_section",
+  "enable_drive_connection",
+  "is_external_drive",
+  "section_break_ijlr",
+  "drive_site_url",
+  "drive_site_user",
+  "drive_site_password"
+ ],
+ "fields": [
+  {
+   "description": "Settings for Frappe Helpdesk app. Manage connection between ERPNext and Helpdesk . Set Helpdesk credentials and URL if it installed on another website.",
+   "fieldname": "helpdesk_settings_section",
+   "fieldtype": "Section Break",
+   "label": "HelpDesk settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_helpdesk_connection",
+   "fieldtype": "Check",
+   "label": "Enable Helpdesk connection"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.enable_helpdesk_connection==1",
+   "description": "If Helpdesk is installed on this website, you don't need to check this option or set credentials informations.",
+   "fieldname": "is_external_helpdesk",
+   "fieldtype": "Check",
+   "label": "Is external Helpdesk ?"
+  },
+  {
+   "description": "Settings for Frappe Gameplan app. Manage connection between ERPNext and Gameplan. Set Gameplan credentials and URL if it installed on another website.",
+   "fieldname": "gameplan_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Gameplan settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_gameplan_connection",
+   "fieldtype": "Check",
+   "label": "Enable Gameplan connection"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.enable_gameplan_connection==1",
+   "description": "If Gameplan is installed on this website, you don't need to check this option or set credentials informations.",
+   "fieldname": "is_external_gameplan",
+   "fieldtype": "Check",
+   "label": "Is external Gameplan ?"
+  },
+  {
+   "description": "Settings for Frappe Drive app. Manage connection between ERPNext and Drive. Set Drive credentials and URL if it installed on another website.",
+   "fieldname": "drive_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Drive settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_drive_connection",
+   "fieldtype": "Check",
+   "label": "Enable Drive connection"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.enable_drive_connection==1",
+   "description": "If Drive is installed on this website, you don't need to check this option or set credentials informations.",
+   "fieldname": "is_external_drive",
+   "fieldtype": "Check",
+   "label": "Is external Drive ?"
+  },
+  {
+   "depends_on": "eval:doc.is_external_gameplan==1",
+   "fieldname": "gameplan_external_settings",
+   "fieldtype": "Column Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "gameplan_tab",
+   "fieldtype": "Tab Break",
+   "label": "Gameplan"
+  },
+  {
+   "fieldname": "helpdesk_tab",
+   "fieldtype": "Tab Break",
+   "label": "Helpdesk"
+  },
+  {
+   "description": "Settings for Frappe Drive app. Manage connection between ERPNext and Drive. Set Drive credentials and URL if it installed on another website.",
+   "fieldname": "drive_tab",
+   "fieldtype": "Tab Break",
+   "label": "Drive"
+  },
+  {
+   "depends_on": "eval:doc.is_external_gameplan==1",
+   "fieldname": "section_break_uybd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.is_external_gameplan==1",
+   "fieldname": "gameplan_site_url",
+   "fieldtype": "Data",
+   "label": "Gameplan site URL"
+  },
+  {
+   "depends_on": "eval:doc.is_external_gameplan==1",
+   "fieldname": "gameplan_site_user",
+   "fieldtype": "Data",
+   "label": "Gameplan User"
+  },
+  {
+   "depends_on": "eval:doc.is_external_gameplan==1",
+   "fieldname": "gameplan_site_password",
+   "fieldtype": "Password",
+   "label": "Gameplan Password"
+  },
+  {
+   "depends_on": "eval:doc.is_external_helpdesk==1",
+   "fieldname": "section_break_cslm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "helpdesk_site_url",
+   "fieldtype": "Data",
+   "label": "Helpdesk site URL"
+  },
+  {
+   "fieldname": "helpdesk_site_user",
+   "fieldtype": "Data",
+   "label": "Helpdesk User"
+  },
+  {
+   "fieldname": "helpdesk_site_password",
+   "fieldtype": "Password",
+   "label": "Helpdesk Password"
+  },
+  {
+   "depends_on": "eval:doc.is_external_drive==1",
+   "fieldname": "section_break_ijlr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.is_external_drive==1",
+   "fieldname": "drive_site_url",
+   "fieldtype": "Data",
+   "label": "Drive Usite URL"
+  },
+  {
+   "depends_on": "eval:doc.is_external_drive==1",
+   "fieldname": "drive_site_user",
+   "fieldtype": "Data",
+   "label": "Drive User"
+  },
+  {
+   "depends_on": "eval:doc.is_external_drive==1",
+   "fieldname": "drive_site_password",
+   "fieldtype": "Data",
+   "label": "Drive Password"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-09-19 16:19:56.085260",
+ "modified_by": "Administrator",
+ "module": "Softia Connector",
+ "name": "Connector Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
