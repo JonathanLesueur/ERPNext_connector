@@ -30,7 +30,7 @@
  "links": [],
  "modified": "2025-09-19 15:58:08.179947",
  "modified_by": "Administrator",
- "module": "Softia Connector",
+ "module": "ERPNext Connector",
  "name": "Gitlab Project ERPNext",
  "owner": "Administrator",
  "permissions": [],

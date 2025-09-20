@@ -1,11 +1,46 @@
-app_name = "softia_connector"
-app_title = "Softia Connector"
+app_name = "erpnext_connector"
+app_title = "Erpnext Connector"
 app_publisher = "Jonathan Lesueur"
-app_description = "Connecteur ERPNext vers d\'autres applications Frappe et vers Gitlab"
-app_email = "jlesueur@softia.fr"
+app_description = "ERPNext connector for Gameplan, Helpdesk, Drive and Gitlab"
+app_email = "jonathan.lesueur.tic@gmail.com"
 app_license = "mit"
 
-after_install = 'softia_connector.setup.install.custom_install'
+
+after_install = 'erpnext_connector.setup.install.custom_install'
+
+fixtures = [
+    {
+        "doctype": "Workspace",
+        "filters": [
+            ["name", "in", ["ERPNext Connector"]]
+        ]
+    }
+]
+
+
+# Document Events
+# ---------------
+# Hook on document methods and events
+
+# doc_events = {
+# 	"*": {
+# 		"on_update": "method",
+# 		"on_cancel": "method",
+# 		"on_trash": "method"
+# 	}
+# }
+
+# Scheduled Tasks
+# ---------------
+
+# scheduler_events = {
+# 	
+# 	"hourly": [
+# 		"erpnext_connector.tasks.hourly"
+# 	],
+# 	
+# }
+
 
 # Apps
 # ------------------
@@ -15,11 +50,11 @@ after_install = 'softia_connector.setup.install.custom_install'
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
-# 		"name": "softia_connector",
-# 		"logo": "/assets/softia_connector/logo.png",
-# 		"title": "Softia Connector",
-# 		"route": "/softia_connector",
-# 		"has_permission": "softia_connector.api.permission.has_app_permission"
+# 		"name": "erpnext_connector",
+# 		"logo": "/assets/erpnext_connector/logo.png",
+# 		"title": "Erpnext Connector",
+# 		"route": "/erpnext_connector",
+# 		"has_permission": "erpnext_connector.api.permission.has_app_permission"
 # 	}
 # ]
 
@@ -27,15 +62,15 @@ after_install = 'softia_connector.setup.install.custom_install'
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/softia_connector/css/softia_connector.css"
-# app_include_js = "/assets/softia_connector/js/softia_connector.js"
+# app_include_css = "/assets/erpnext_connector/css/erpnext_connector.css"
+# app_include_js = "/assets/erpnext_connector/js/erpnext_connector.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/softia_connector/css/softia_connector.css"
-# web_include_js = "/assets/softia_connector/js/softia_connector.js"
+# web_include_css = "/assets/erpnext_connector/css/erpnext_connector.css"
+# web_include_js = "/assets/erpnext_connector/js/erpnext_connector.js"
 
 # include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "softia_connector/public/scss/website"
+# website_theme_scss = "erpnext_connector/public/scss/website"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -53,7 +88,7 @@ after_install = 'softia_connector.setup.install.custom_install'
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "softia_connector/public/icons.svg"
+# app_include_icons = "erpnext_connector/public/icons.svg"
 
 # Home Pages
 # ----------
@@ -77,43 +112,43 @@ after_install = 'softia_connector.setup.install.custom_install'
 
 # add methods and filters to jinja environment
 # jinja = {
-# 	"methods": "softia_connector.utils.jinja_methods",
-# 	"filters": "softia_connector.utils.jinja_filters"
+# 	"methods": "erpnext_connector.utils.jinja_methods",
+# 	"filters": "erpnext_connector.utils.jinja_filters"
 # }
 
 # Installation
 # ------------
 
-# before_install = "softia_connector.install.before_install"
-# after_install = "softia_connector.install.after_install"
+# before_install = "erpnext_connector.install.before_install"
+# after_install = "erpnext_connector.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "softia_connector.uninstall.before_uninstall"
-# after_uninstall = "softia_connector.uninstall.after_uninstall"
+# before_uninstall = "erpnext_connector.uninstall.before_uninstall"
+# after_uninstall = "erpnext_connector.uninstall.after_uninstall"
 
 # Integration Setup
 # ------------------
 # To set up dependencies/integrations with other apps
 # Name of the app being installed is passed as an argument
 
-# before_app_install = "softia_connector.utils.before_app_install"
-# after_app_install = "softia_connector.utils.after_app_install"
+# before_app_install = "erpnext_connector.utils.before_app_install"
+# after_app_install = "erpnext_connector.utils.after_app_install"
 
 # Integration Cleanup
 # -------------------
 # To clean up dependencies/integrations with other apps
 # Name of the app being uninstalled is passed as an argument
 
-# before_app_uninstall = "softia_connector.utils.before_app_uninstall"
-# after_app_uninstall = "softia_connector.utils.after_app_uninstall"
+# before_app_uninstall = "erpnext_connector.utils.before_app_uninstall"
+# after_app_uninstall = "erpnext_connector.utils.after_app_uninstall"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "softia_connector.notifications.get_notification_config"
+# notification_config = "erpnext_connector.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -135,56 +170,24 @@ after_install = 'softia_connector.setup.install.custom_install'
 # 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
-# Document Events
-# ---------------
-# Hook on document methods and events
-
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
-
-# Scheduled Tasks
-# ---------------
-
-# scheduler_events = {
-# 	"all": [
-# 		"softia_connector.tasks.all"
-# 	],
-# 	"daily": [
-# 		"softia_connector.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"softia_connector.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"softia_connector.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"softia_connector.tasks.monthly"
-# 	],
-# }
 
 # Testing
 # -------
 
-# before_tests = "softia_connector.install.before_tests"
+# before_tests = "erpnext_connector.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "softia_connector.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "erpnext_connector.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "softia_connector.task.get_dashboard_data"
+# 	"Task": "erpnext_connector.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -198,13 +201,13 @@ after_install = 'softia_connector.setup.install.custom_install'
 
 # Request Events
 # ----------------
-# before_request = ["softia_connector.utils.before_request"]
-# after_request = ["softia_connector.utils.after_request"]
+# before_request = ["erpnext_connector.utils.before_request"]
+# after_request = ["erpnext_connector.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["softia_connector.utils.before_job"]
-# after_job = ["softia_connector.utils.after_job"]
+# before_job = ["erpnext_connector.utils.before_job"]
+# after_job = ["erpnext_connector.utils.after_job"]
 
 # User Data Protection
 # --------------------
@@ -234,7 +237,7 @@ after_install = 'softia_connector.setup.install.custom_install'
 # --------------------------------
 
 # auth_hooks = [
-# 	"softia_connector.auth.validate"
+# 	"erpnext_connector.auth.validate"
 # ]
 
 # Automatically update python controller files with type annotations for this app.

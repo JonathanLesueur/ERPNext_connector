@@ -1,6 +1,6 @@
-### Softia Connector
+### Erpnext Connector
 
-Connecteur ERPNext vers d\'autres applications Frappe et vers Gitlab
+ERPNext connector for Gameplan, Helpdesk, Drive and Gitlab
 
 ### Installation
 
@@ -9,7 +9,7 @@ You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 ```bash
 cd $PATH_TO_YOUR_BENCH
 bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app softia_connector
+bench install-app erpnext_connector
 ```
 
 ### Contributing
@@ -17,7 +17,7 @@ bench install-app softia_connector
 This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
 
 ```bash
-cd apps/softia_connector
+cd apps/erpnext_connector
 pre-commit install
 ```
 

@@ -1,9 +1,9 @@
 [project]
-name = "softia_connector"
+name = "erpnext_connector"
 authors = [
-    { name = "Jonathan Lesueur", email = "jlesueur@softia.fr"}
+    { name = "Jonathan Lesueur", email = "jonathan.lesueur.tic@gmail.com"}
 ]
-description = "Connecteur ERPNext vers d'autres applications Frappe et vers Gitlab"
+description = "ERPNext connector for Gameplan, Helpdesk, Drive and Gitlab"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
