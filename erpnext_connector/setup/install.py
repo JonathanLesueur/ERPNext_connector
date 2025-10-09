@@ -21,6 +21,28 @@ def create_custom_fields():
             "options":"Gitlab Project ERPNext",
             "dt": "Project",
             "insert_after": "gitlab_tab"
+        },
+        {
+            "fieldname":"custom_drive",
+            "label": "Drive",
+            "fieldtype": "Tab Break",
+            "dt": "Project",
+            "insert_after": "projets_gitlab"
+        }
+        {
+            "fieldname": "custom_create_drive_space",
+            "label": "Create Drive Space",
+            "fieldtype": "Check",
+            "dt": "Project",
+            "insert_after": "drive_tab"
+        },
+        {
+            "fieldname": "project_reference",
+            "label": "Project Reference",
+            "fieldtype": "Link",
+            "options": "Project",
+            "dt": "Drive Team",
+            "insert_after": "title"
         }
     ]
 

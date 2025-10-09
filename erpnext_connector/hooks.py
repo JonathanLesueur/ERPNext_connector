@@ -1,12 +1,13 @@
 app_name = "erpnext_connector"
 app_title = "Erpnext Connector"
-app_publisher = "Jonathan Lesueur"
+app_publisher = "Softia Ingénierie"
 app_description = "ERPNext connector for Gameplan, Helpdesk, Drive and Gitlab"
-app_email = "jonathan.lesueur.tic@gmail.com"
+app_email = "_@softia.fr"
 app_license = "mit"
 
 
 after_install = 'erpnext_connector.setup.install.custom_install'
+# before_uninstall = "erpnext_connector.uninstall.before_uninstall"
 
 fixtures = [
     {
@@ -22,12 +23,35 @@ fixtures = [
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
+doc_events = {
+ 	"Project": {
+ 		"on_update": "erpnext_connector.events.erpnext.projects.project.on_update"
+    }
+}
+# 		"on_cancel": "erpnext_connector.events.erpnext.projects.project.on_cancel",
+# 		"on_trash": "erpnext_connector.events.erpnext.projects.project.on_trash"
+# 	},
+# 	"Task": {
+# 		"on_update": "erpnext_connector.events.erpnext.projects.task.on_update",
+# 		"on_cancel": "erpnext_connector.events.erpnext.projects.task.on_cancel",
+# 		"on_trash": "erpnext_connector.events.erpnext.projects.task.on_trash"
+# 	},
+# 	"GP Project": {
+# 		"on_update": "erpnext_connector.events.gameplan.project.on_update",
+# 		"on_cancel": "erpnext_connector.events.gameplan.project.on_cancel",
+# 		"on_trash": "erpnext_connector.events.gameplan.project.on_trash"
+# 	},
+# 	"GP Task": {
+# 		"on_update": "erpnext_connector.events.gameplan.task.on_update",
+# 		"on_cancel": "erpnext_connector.events.gameplan.task.on_cancel",
+# 		"on_trash": "erpnext_connector.events.gameplan.task.on_trash"
+# 	},
+# 	"HD Ticket": {
+# 		"on_update": "erpnext_connector.events.helpdesk.tickets.ticket.on_update",
+# 		"on_cancel": "erpnext_connector.events.helpdesk.tickets.ticket.on_cancel",
+# 		"on_trash": "erpnext_connector.events.helpdesk.tickets.ticket.on_trash"
+# 	},
+
 # }
 
 # Scheduled Tasks

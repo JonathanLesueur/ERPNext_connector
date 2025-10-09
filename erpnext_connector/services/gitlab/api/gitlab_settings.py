@@ -11,5 +11,6 @@ def get_gitlab_settings():
 
     return {
         "url": settings.gitlab_site_url.rstrip("/"),   # on enlève le "/" final si présent
-        "token": settings.gitlab_authentication_token
+        "token": settings.gitlab_authentication_token,
+        "api_version": settings.gitlab_api_version
     }

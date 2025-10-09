@@ -20,6 +20,8 @@ frappe.ui.form.on("Gitlab Settings", {
             frm.set_df_property('gitlab_authentication_token', 'reqd', 1);
             frm.set_df_property('gitlab_authentication_token', 'hidden', 0);
 
+            frm.set_df_property('gitlab_webhook_secret', 'hidden', 0);
+
         } else {
             frm.set_df_property('gitlab_site_url', 'reqd', 0);
             frm.set_df_property('gitlab_site_url', 'hidden', 1);
@@ -29,6 +31,8 @@ frappe.ui.form.on("Gitlab Settings", {
 
             frm.set_df_property('gitlab_authentication_token', 'reqd', 0);
             frm.set_df_property('gitlab_authentication_token', 'hidden', 1);
+
+            frm.set_df_property('gitlab_webhook_secret', 'hidden', 1);
         }
     }
 });

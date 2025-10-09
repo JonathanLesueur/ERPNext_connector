@@ -10,7 +10,8 @@
   "enable_gitlab_connection",
   "gitlab_site_url",
   "gitlab_authentication_token",
-  "gitlab_api_version"
+  "gitlab_api_version",
+  "gitlab_webhook_secret"
  ],
  "fields": [
   {
@@ -39,19 +40,25 @@
    "label": "Enable Gitlab Connection"
   },
   {
+   "default": "4",
    "fieldname": "gitlab_api_version",
    "fieldtype": "Select",
    "label": "Gitlab API Version",
    "options": "1\n2\n3\n4\n5"
+  },
+  {
+   "fieldname": "gitlab_webhook_secret",
+   "fieldtype": "Data",
+   "label": "Gitlab Webhook secret"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-09-19 13:15:46.481831",
+ "modified": "2025-09-25 15:25:06.780125",
  "modified_by": "Administrator",
- "module": "ERPNext Connector",
+ "module": "Erpnext Connector",
  "name": "Gitlab Settings",
  "owner": "Administrator",
  "permissions": [

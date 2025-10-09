@@ -29,11 +29,27 @@
   "section_break_ijlr",
   "drive_site_url",
   "drive_site_user",
-  "drive_site_password"
+  "drive_site_password",
+  "wiki_tab",
+  "wiki_settings_section",
+  "enable_wiki_connection",
+  "is_external_wiki",
+  "section_break_ijls",
+  "wiki_site_url",
+  "wiki_site_user",
+  "wiki_site_password",
+  "learning_tab",
+  "learning_settings_section",
+  "enable_learning_connection",
+  "is_external_learning",
+  "section_break_ijlt",
+  "learning_site_url",
+  "learning_site_user",
+  "learning_site_password"
  ],
  "fields": [
   {
-   "description": "Settings for Frappe Helpdesk app. Manage connection between ERPNext and Helpdesk . Set Helpdesk credentials and URL if it installed on another website.",
+   "description": "Settings for the Frappe Helpdesk app. Manage the connection between ERPNext and Helpdesk . Enter your Helpdesk credentials and URL if it installed on another website.",
    "fieldname": "helpdesk_settings_section",
    "fieldtype": "Section Break",
    "label": "HelpDesk settings"
@@ -47,13 +63,13 @@
   {
    "default": "0",
    "depends_on": "eval:doc.enable_helpdesk_connection==1",
-   "description": "If Helpdesk is installed on this website, you don't need to check this option or set credentials informations.",
+   "description": "If Helpdesk is installed on this website, you don't need to check this option or Enter your credentials informations.",
    "fieldname": "is_external_helpdesk",
    "fieldtype": "Check",
    "label": "Is external Helpdesk ?"
   },
   {
-   "description": "Settings for Frappe Gameplan app. Manage connection between ERPNext and Gameplan. Set Gameplan credentials and URL if it installed on another website.",
+   "description": "Settings for the Frappe Gameplan app. Manage the connection between ERPNext and Gameplan. Enter your Gameplan credentials and URL if it installed on another website.",
    "fieldname": "gameplan_settings_section",
    "fieldtype": "Section Break",
    "label": "Gameplan settings"
@@ -67,13 +83,13 @@
   {
    "default": "0",
    "depends_on": "eval:doc.enable_gameplan_connection==1",
-   "description": "If Gameplan is installed on this website, you don't need to check this option or set credentials informations.",
+   "description": "If Gameplan is installed on this website, you don't need to check this option or Enter your credentials informations.",
    "fieldname": "is_external_gameplan",
    "fieldtype": "Check",
    "label": "Is external Gameplan ?"
   },
   {
-   "description": "Settings for Frappe Drive app. Manage connection between ERPNext and Drive. Set Drive credentials and URL if it installed on another website.",
+   "description": "Settings for the Frappe Drive app. Manage the connection between ERPNext and Drive. Enter your Drive credentials and URL if it installed on another website.",
    "fieldname": "drive_settings_section",
    "fieldtype": "Section Break",
    "label": "Drive settings"
@@ -87,7 +103,7 @@
   {
    "default": "0",
    "depends_on": "eval:doc.enable_drive_connection==1",
-   "description": "If Drive is installed on this website, you don't need to check this option or set credentials informations.",
+   "description": "If Drive is installed on this website, you don't need to check this option or Enter your credentials informations.",
    "fieldname": "is_external_drive",
    "fieldtype": "Check",
    "label": "Is external Drive ?"
@@ -109,7 +125,7 @@
    "label": "Helpdesk"
   },
   {
-   "description": "Settings for Frappe Drive app. Manage connection between ERPNext and Drive. Set Drive credentials and URL if it installed on another website.",
+   "description": "Settings for the Frappe Drive app. Manage the connection between ERPNext and Drive. Enter your Drive credentials and URL if it installed on another website.",
    "fieldname": "drive_tab",
    "fieldtype": "Tab Break",
    "label": "Drive"
@@ -179,15 +195,111 @@
    "fieldname": "drive_site_password",
    "fieldtype": "Data",
    "label": "Drive Password"
+  },
+  {
+   "fieldname": "wiki_tab",
+   "fieldtype": "Tab Break",
+   "label": "Wiki"
+  },
+  {
+   "description": "Settings for the Frappe Wiki app. Manage the connection between ERPNext and Wiki. Enter your Wiki credentials and URL if it installed on another website.",
+   "fieldname": "wiki_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Wiki settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_wiki_connection",
+   "fieldtype": "Check",
+   "label": "Enable Wiki connection"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.enable_wiki_connection==1",
+   "description": "If Wiki is installed on this website, you don't need to check this option or Enter your credentials informations.",
+   "fieldname": "is_external_wiki",
+   "fieldtype": "Check",
+   "label": "Is external Wiki ?"
+  },
+   {
+   "depends_on": "eval:doc.is_external_wiki==1",
+   "fieldname": "section_break_ijls",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.is_external_wiki==1",
+   "fieldname": "wiki_site_url",
+   "fieldtype": "Data",
+   "label": "Wiki Usite URL"
+  },
+  {
+   "depends_on": "eval:doc.is_external_wiki==1",
+   "fieldname": "wiki_site_user",
+   "fieldtype": "Data",
+   "label": "Wiki User"
+  },
+  {
+   "depends_on": "eval:doc.is_external_wiki==1",
+   "fieldname": "wiki_site_password",
+   "fieldtype": "Data",
+   "label": "Wiki Password"
+  },
+  {
+   "fieldname": "learning_tab",
+   "fieldtype": "Tab Break",
+   "label": "Learning"
+  },
+    {
+   "description": "Settings for the Frappe Learning app. Manage the connection between ERPNext and Learning. Enter your Learning credentials and URL if it installed on another website.",
+   "fieldname": "learning_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Learning settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_learning_connection",
+   "fieldtype": "Check",
+   "label": "Enable Learning connection"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.enable_learning_connection==1",
+   "description": "If Learning is installed on this website, you don't need to check this option or Enter your credentials informations.",
+   "fieldname": "is_external_learning",
+   "fieldtype": "Check",
+   "label": "Is external Learning ?"
+  },
+   {
+   "depends_on": "eval:doc.is_external_learning==1",
+   "fieldname": "section_break_ijlt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.is_external_learning==1",
+   "fieldname": "learning_site_url",
+   "fieldtype": "Data",
+   "label": "Learning Usite URL"
+  },
+  {
+   "depends_on": "eval:doc.is_external_learning==1",
+   "fieldname": "learning_site_user",
+   "fieldtype": "Data",
+   "label": "Learning User"
+  },
+  {
+   "depends_on": "eval:doc.is_external_learning==1",
+   "fieldname": "learning_site_password",
+   "fieldtype": "Data",
+   "label": "Learning Password"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-09-19 16:19:56.085260",
+ "modified": "2025-09-25 10:35:59.576521",
  "modified_by": "Administrator",
- "module": "ERPNext Connector",
+ "module": "Erpnext Connector",
  "name": "Connector Settings",
  "owner": "Administrator",
  "permissions": [
