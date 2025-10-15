@@ -1,7 +1,8 @@
 import frappe
 from frappe import _
-from frappe.utils import cstr
-from frappe.utils import cint
+from frappe.utils import cstr, cint
+from erpnext_connector.services.common.is_app_installed import is_drive_installed, is_gameplan_installed, is_helpdesk_installed, is_wiki_installed, is_lms_installed
+
 
 def get_project_users(project_name):
     """Get all users associated with a project"""
@@ -178,7 +179,8 @@ def on_update(doc, method):
         doc: Project Document
         method: on_update
     """
-    if cint(doc.custom_create_drive_space):
-        handle_drive_integration(doc)
+    if is_drive_installed():
+        if cint(doc.custom_create_drive_space):
+            handle_drive_integration(doc)
     
     # Future integrations can be added here
