@@ -28,13 +28,27 @@ def create_custom_fields():
             "fieldtype": "Tab Break",
             "dt": "Project",
             "insert_after": "projets_gitlab"
-        }
+        },
         {
             "fieldname": "custom_create_drive_space",
             "label": "Create Drive Space",
             "fieldtype": "Check",
             "dt": "Project",
             "insert_after": "drive_tab"
+        },
+        {
+            "fieldname":"custom_wiki",
+            "label": "Wiki",
+            "fieldtype": "Tab Break",
+            "dt": "Project",
+            "insert_after": "custom_create_drive_space"
+        },
+        {
+            "fieldname": "custom_create_wiki_space",
+            "label": "Create Wiki Space",
+            "fieldtype": "Check",
+            "dt": "Project",
+            "insert_after": "wiki_tab"
         },
         {
             "fieldname": "project_reference",

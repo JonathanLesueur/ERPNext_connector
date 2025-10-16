@@ -2,8 +2,10 @@ import frappe
 from frappe import _
 from frappe.utils import cstr, cint
 from erpnext_connector.services.common.is_app_installed import is_drive_installed, is_gameplan_installed, is_helpdesk_installed, is_wiki_installed, is_lms_installed
+from pathlib import Path
+from erpnext_connector.modeles.wiki.wiki_pages import presentation_projet, equipes_contacts
 
-
+    
 def get_project_users(project_name):
     """Get all users associated with a project"""
     users = []
@@ -63,15 +65,31 @@ def create_default_folders(team_name):
         )
         raise e
     
-def create_wiki_global_projects_space(doc):
-    """Create a Wiki Space for the projects"""
+def create_wiki_project_space(doc):
+    """Create a Wiki Space for a project"""
+    space_settings = frappe.get_single("Wiki Settings")
+    if not space_settings:
+        return None
+    
     space = frappe.get_doc({
         "doctype": "Wiki Space",
-        "space_name": "Projects",
-        "route": "wiki/projects"
+        "space_name": doc.project_name,
+        "route": f"wiki/{doc.project_name.replace(' ', '-').lower()[:10]}",
         "owner": doc.owner
     })
     space.insert(ignore_permissions=True)
+
+    space_settings.append("app_switcher_list", {
+        "app_title": doc.project_name,
+        "wiki_space": space
+    })
+
+    space_settings.save(ignore_permissions=True)
+
+    frappe.msgprint(
+        msg=_("Wiki Space for project {0} has been created.").format(doc.project_name),
+        alert=True
+    )
 
     return space
 
@@ -161,55 +179,101 @@ def show_update_messages(team, project_name):
         )
 
 
-def create_base_pages_for_space(space):
-    
+def create_base_pages_for_space(doc, space):
     groups = [
-        {"title": "Documentation", "pages": ["Guide de démarrage", "FAQ"]},
-        {"title": "Ressources", "pages": ["Liens utiles", "Contacts"]},
-        {"title": "Collaboration", "pages": ["Discussions", "Projets en cours"]}
+        {
+            "title": "Définition",
+            "pages": [
+                {
+                    "title": "Présentation du projet",
+                    "content": presentation_projet
+                },
+                {
+                    "title": "Equipe & Contacts",
+                    "content": equipes_contacts
+                }
+            ]
+        }
     ]
-    for group in groups:
-    
-        for page in group.pages:
-           
-            wiki_page = frappe.get_doc({
-                "doctype": "Wiki Page",
-                "title": page["title"],
-                "content": page["content"],
-                "route": f"wiki/{space.route}/{page['title'].replace(' ', '-').lower()}",
-                "published": 1,
-                "allow_guest": 0,
-            })
-            wiki_page.insert(ignore_permissions=True)
 
-            update_sidebar_for_space(space, wiki_page, group)
+    try:
+        for group in groups:
+            for page in group['pages']:
+            
+                wiki_page = frappe.get_doc({
+                    "doctype": "Wiki Page",
+                    "title": page["title"],
+                    "content": page["content"],
+                    "route": f"{space.route}/{space.space_name.replace(' ', '-').lower()[:5]}-{page['title'].replace(' ', '-').lower()}",
+                    "published": 1,
+                    "allow_guest": 0,
+                })
+                wiki_page.insert(ignore_permissions=True)
+                update_sidebar_for_space(space, wiki_page, group)
+        
+        update_navbar_for_space(space)
+
+        frappe.msgprint(
+            msg=_("Default Wiki pages has been created for project {0}.").format(doc.project_name),
+            alert=True
+        )
+    except Exception as e:
+        frappe.log_error(
+            title="Error in creating base wiki pages",
+            message=f"Failed to create base wiki pages for space {space.space_name}: {cstr(e)}"
+        )
+        raise e
 
 def update_sidebar_for_space(space, page, group):
-    """Add members to a Drive Team""" 
+    """Add page to the sidebar of the Wiki Space""" 
     space.append("wiki_sidebars", {
-        "wiki_page": page.title,
-        "parent_label": group.title
+        "wiki_page": page,
+        "parent_label": group['title']
     })
+    space.save(ignore_permissions=True)
+
+def update_navbar_for_space(space):
+    """Add menus to the top navbar of the Wiki Space""" 
+
+    menus = [
+        {
+            "title": "Gitlab",
+            "url": "https://git.softia.fr",
+            "right": 1,
+            "open_in_new_tab": 1
+        }
+    ]
+
+    for menu in menus:
+        space.append("navbar_items", {
+            "label": menu['title'],
+            "url": menu['url'],
+            "right": menu['right'],
+            "open_in_new_tab": menu['open_in_new_tab']
+        })
+    space.save(ignore_permissions=True)
 
 def handle_wiki_integration(doc):
     """Handle Wiki Space creation when a project is created"""
-    try:
-        space_exists = frappe.db.exists("Wiki Space", {"title": "Projects"})
-        if not space_exists:
-            projects_space = create_wiki_global_projects_space(doc)
-        else:
-            projects_space = frappe.get_doc("Wiki Space", {"title": "Projects"})
+    #try:
+    space_exists = frappe.db.exists("Wiki Space", {"space_name": doc.project_name})
+    if not space_exists:
+        projects_space = create_wiki_project_space(doc)
+    else:
+        projects_space = frappe.get_doc("Wiki Space", {"space_name": doc.project_name})
+    
+    create_base_pages_for_space(doc, projects_space)
 
-        
-
-    except Exception as e:
-        frappe.log_error(
-            title="Error in Project Wiki Space Creation",
-            message=_("Failed to create Wiki Global Space for projects.")
-        )
-        frappe.throw(
-            _("Could not create Wiki Space")
-        )
+    #if not projects_space:
+    #    frappe.throw(_("Wiki Space creation is disabled in Wiki Settings."))
+    #except Exception as e:
+    #    frappe.log_error(
+    #        title="Error in Project Wiki Space Creation",
+    #        message=_("Failed to create Wiki Global Space for projects.")
+    #    )
+    #    frappe.throw(
+    #        _("Could not create Wiki Space")
+    #    )
 
 def handle_drive_integration(doc):
     """Handle Drive Team creation and updates"""
@@ -248,6 +312,7 @@ def on_update(doc, method):
             handle_drive_integration(doc)
 
     if is_wiki_installed():
-        handle_wiki_integration(doc)
+        if cint(doc.custom_create_wiki_space):
+            handle_wiki_integration(doc)
     
     # Future integrations can be added here
