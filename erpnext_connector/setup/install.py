@@ -2,14 +2,14 @@ import frappe
 from frappe import _
 from erpnext_connector.services.common.is_app_installed import is_app_installed
 from erpnext_connector.services.common.custom_fields import create_custom_field
-from erpnext_connector.setup.custom_fields.custom_fields import erpnext_fields, drive_fields, helpdesk_fields, lms_fields, gameplan_fields
+from erpnext_connector.setup.custom_fields.custom_fields import erpnext_fields, drive_fields, helpdesk_fields, lms_fields, gameplan_fields, wiki_fields, gitlab_fields
 
 def custom_install():
      create_custom_fields()
 
 
 def create_custom_fields():
-    custom_fields = erpnext_fields + drive_fields + helpdesk_fields + lms_fields + gameplan_fields
+    custom_fields = erpnext_fields + drive_fields + helpdesk_fields + lms_fields + gameplan_fields + wiki_fields + gitlab_fields
 
     for field in custom_fields:
         if not is_app_installed(field["application"]):

@@ -16,8 +16,8 @@ class ConnectorSettings(Document):
         """Create or remove Drive custom fields based on connection status"""
         if self.enable_drive_connection:
             self.create_drive_custom_fields()
-        else:
-            self.remove_drive_custom_fields()
+        #else:
+        #    self.remove_drive_custom_fields()
     
     def create_drive_custom_fields(self):
         """Create Drive-related custom fields"""
@@ -39,13 +39,9 @@ class ConnectorSettings(Document):
     
     def remove_drive_custom_fields(self):
         """Remove Drive-related custom fields"""
-        drive_fields = [
-            {"dt": "Project", "fieldname": "custom_drive"},
-            {"dt": "Project", "fieldname": "custom_create_drive_space"},
-            {"dt": "Drive Team", "fieldname": "project_reference"}
-        ]
+        custom_fields = drive_fields
         
-        for field in drive_fields:
+        for field in custom_fields:
             custom_field = frappe.db.exists("Custom Field", {
                 "dt": field["dt"],
                 "fieldname": field["fieldname"]
@@ -55,6 +51,6 @@ class ConnectorSettings(Document):
                 frappe.msgprint(_(f"Removed custom field {field['fieldname']} from {field['dt']}"))
 
 @frappe.whitelist()
-def check_app_installed(app_name):
+def check_app_installed(app_name: str) -> bool:
     """Check if an app is installed without permission restrictions"""
     return is_app_installed(app_name)

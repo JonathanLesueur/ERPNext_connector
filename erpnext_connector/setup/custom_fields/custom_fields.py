@@ -1,21 +1,8 @@
 erpnext_fields = [
-    {
-        "fieldname": "gitlab_tab",
-        "label": "Gitlab",
-        "fieldtype": "Tab Break",
-        "dt": "Project",
-        "insert_after": "to_time",
-        "application": "erpnext"
-    },
-    {
-        "fieldname": "projets_gitlab",
-        "label": "Gitlab Projects",
-        "fieldtype": "Table",
-        "options": "Gitlab Project ERPNext",
-        "dt": "Project",
-        "insert_after": "gitlab_tab",
-        "application": "erpnext"
-    },
+
+]
+
+drive_fields = [
     {
         "fieldname": "custom_drive",
         "label": "Drive",
@@ -32,6 +19,24 @@ erpnext_fields = [
         "insert_after": "drive_tab",
         "application": "erpnext"
     },
+    {
+        "fieldname": "project_reference",
+        "label": "Project Reference",
+        "fieldtype": "Link",
+        "options": "Project",
+        "dt": "Drive Team",
+        "insert_after": "title",
+        "application": "drive"
+    }
+]
+
+helpdesk_fields = []
+
+lms_fields = []
+
+gameplan_fields = []
+
+wiki_fields = [
     {
         "fieldname": "custom_wiki",
         "label": "Wiki",
@@ -50,20 +55,22 @@ erpnext_fields = [
     }
 ]
 
-drive_fields = [
+gitlab_fields = [
     {
-        "fieldname": "project_reference",
-        "label": "Project Reference",
-        "fieldtype": "Link",
-        "options": "Project",
-        "dt": "Drive Team",
-        "insert_after": "title",
-        "application": "drive"
+        "fieldname": "gitlab_tab",
+        "label": "Gitlab",
+        "fieldtype": "Tab Break",
+        "dt": "Project",
+        "insert_after": "to_time",
+        "application": "erpnext"
+    },
+    {
+        "fieldname": "projets_gitlab",
+        "label": "Gitlab Projects",
+        "fieldtype": "Table",
+        "options": "Gitlab Project ERPNext",
+        "dt": "Project",
+        "insert_after": "gitlab_tab",
+        "application": "erpnext"
     }
 ]
-
-helpdesk_fields = []
-
-lms_fields = []
-
-gameplan_fields = []
