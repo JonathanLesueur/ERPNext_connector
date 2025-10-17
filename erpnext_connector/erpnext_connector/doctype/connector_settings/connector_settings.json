@@ -5,6 +5,14 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "drive_tab",
+  "drive_settings_section",
+  "enable_drive_connection",
+  "is_external_drive",
+  "section_break_ijlr",
+  "drive_site_url",
+  "drive_site_user",
+  "drive_site_password",
   "gameplan_tab",
   "gameplan_settings_section",
   "enable_gameplan_connection",
@@ -22,22 +30,6 @@
   "helpdesk_site_url",
   "helpdesk_site_user",
   "helpdesk_site_password",
-  "drive_tab",
-  "drive_settings_section",
-  "enable_drive_connection",
-  "is_external_drive",
-  "section_break_ijlr",
-  "drive_site_url",
-  "drive_site_user",
-  "drive_site_password",
-  "wiki_tab",
-  "wiki_settings_section",
-  "enable_wiki_connection",
-  "is_external_wiki",
-  "section_break_ijls",
-  "wiki_site_url",
-  "wiki_site_user",
-  "wiki_site_password",
   "learning_tab",
   "learning_settings_section",
   "enable_learning_connection",
@@ -45,7 +37,15 @@
   "section_break_ijlt",
   "learning_site_url",
   "learning_site_user",
-  "learning_site_password"
+  "learning_site_password",
+  "wiki_tab",
+  "wiki_settings_section",
+  "enable_wiki_connection",
+  "is_external_wiki",
+  "section_break_ijls",
+  "wiki_site_url",
+  "wiki_site_user",
+  "wiki_site_password"
  ],
  "fields": [
   {
@@ -221,7 +221,7 @@
    "fieldtype": "Check",
    "label": "Is external Wiki ?"
   },
-   {
+  {
    "depends_on": "eval:doc.is_external_wiki==1",
    "fieldname": "section_break_ijls",
    "fieldtype": "Section Break"
@@ -249,7 +249,7 @@
    "fieldtype": "Tab Break",
    "label": "Learning"
   },
-    {
+  {
    "description": "Settings for the Frappe Learning app. Manage the connection between ERPNext and Learning. Enter your Learning credentials and URL if it installed on another website.",
    "fieldname": "learning_settings_section",
    "fieldtype": "Section Break",
@@ -269,7 +269,7 @@
    "fieldtype": "Check",
    "label": "Is external Learning ?"
   },
-   {
+  {
    "depends_on": "eval:doc.is_external_learning==1",
    "fieldname": "section_break_ijlt",
    "fieldtype": "Section Break"
@@ -297,7 +297,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-09-25 10:35:59.576521",
+ "modified": "2025-10-17 12:55:42.577439",
  "modified_by": "Administrator",
  "module": "Erpnext Connector",
  "name": "Connector Settings",

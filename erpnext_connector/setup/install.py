@@ -1,66 +1,20 @@
 import frappe
 from frappe import _
+from erpnext_connector.services.common.is_app_installed import is_app_installed
+from erpnext_connector.services.common.custom_fields import create_custom_field
+from erpnext_connector.setup.custom_fields.custom_fields import erpnext_fields, drive_fields, helpdesk_fields, lms_fields, gameplan_fields
 
 def custom_install():
      create_custom_fields()
 
 
 def create_custom_fields():
-    custom_fields = [
-        {
-            "fieldname":"gitlab_tab",
-            "label": "Gitlab",
-            "fieldtype": "Tab Break",
-            "dt": "Project",
-            "insert_after": "to_time"
-        },
-        {
-            "fieldname":"projets_gitlab",
-            "label": "Gitlab Projects",
-            "fieldtype": "Table",
-            "options":"Gitlab Project ERPNext",
-            "dt": "Project",
-            "insert_after": "gitlab_tab"
-        },
-        {
-            "fieldname":"custom_drive",
-            "label": "Drive",
-            "fieldtype": "Tab Break",
-            "dt": "Project",
-            "insert_after": "projets_gitlab"
-        },
-        {
-            "fieldname": "custom_create_drive_space",
-            "label": "Create Drive Space",
-            "fieldtype": "Check",
-            "dt": "Project",
-            "insert_after": "drive_tab"
-        },
-        {
-            "fieldname":"custom_wiki",
-            "label": "Wiki",
-            "fieldtype": "Tab Break",
-            "dt": "Project",
-            "insert_after": "custom_create_drive_space"
-        },
-        {
-            "fieldname": "custom_create_wiki_space",
-            "label": "Create Wiki Space",
-            "fieldtype": "Check",
-            "dt": "Project",
-            "insert_after": "wiki_tab"
-        },
-        {
-            "fieldname": "project_reference",
-            "label": "Project Reference",
-            "fieldtype": "Link",
-            "options": "Project",
-            "dt": "Drive Team",
-            "insert_after": "title"
-        }
-    ]
+    custom_fields = erpnext_fields + drive_fields + helpdesk_fields + lms_fields + gameplan_fields
 
     for field in custom_fields:
+        if not is_app_installed(field["application"]):
+            print(_("Application '{0}' is not installed. Skipping custom field '{1}' creation.").format(field["application"], field["label"]))
+            continue
         if frappe.db.exists("Custom Field", {
             "dt": field["dt"],
             "fieldname": field["fieldname"]
@@ -69,26 +23,10 @@ def create_custom_fields():
             continue
 
         try:
-            frappe.get_doc({
-                "doctype": "Custom Field",
-                "dt": field["dt"],
-                "fieldname": field["fieldname"],
-                "fieldtype": field["fieldtype"],
-                "options": field.get("options", ""),
-                "label": field.get("label"),
-                "insert_after": field.get("insert_after"),
-                "unique": field.get("unique", 0),
-                "hidden": field.get("hidden", 0),
-                "read_only": field.get("read_only", 0),
-                "in_list_view": field.get("in_list_view", 0),
-                "reqd": field.get("reqd", 0),
-                "no_copy": field.get("no_copy", 0),
-                "bold": field.get("bold", 0),
-                "translatable": field.get("translatable", 0),
-                "allow_in_quick_entry": field.get("allow_in_quick_entry", 0),
-                "allow_on_submit": field.get("allow_on_submit", 0),
-            }).insert()
-            print(_("Custom field '{0}' inserted.").format(field['fieldname']))
+            if not is_app_installed(field["application"]):
+                continue
+            create_custom_field(field)
+
         except frappe.DuplicateEntryError:
                 print(_("Duplicate detected for '{0}', skipping insertion.").format(field['fieldname']))
     frappe.db.commit()

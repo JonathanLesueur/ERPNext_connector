@@ -25,31 +25,31 @@ fixtures = [
 
 doc_events = {
  	"Project": {
- 		"on_update": "erpnext_connector.events.erpnext.projects.project.on_update"
+ 		"on_update": "erpnext_connector.events.erpnext.projects.project_events.on_update"
     }
 }
-# 		"on_cancel": "erpnext_connector.events.erpnext.projects.project.on_cancel",
-# 		"on_trash": "erpnext_connector.events.erpnext.projects.project.on_trash"
+# 		"on_cancel": "erpnext_connector.events.erpnext.projects.project_events.on_cancel",
+# 		"on_trash": "erpnext_connector.events.erpnext.projects.project_events.on_trash"
 # 	},
 # 	"Task": {
-# 		"on_update": "erpnext_connector.events.erpnext.projects.task.on_update",
-# 		"on_cancel": "erpnext_connector.events.erpnext.projects.task.on_cancel",
-# 		"on_trash": "erpnext_connector.events.erpnext.projects.task.on_trash"
+# 		"on_update": "erpnext_connector.events.erpnext.projects.task_events.on_update",
+# 		"on_cancel": "erpnext_connector.events.erpnext.projects.task_events.on_cancel",
+# 		"on_trash": "erpnext_connector.events.erpnext.projects.task_events.on_trash"
 # 	},
 # 	"GP Project": {
-# 		"on_update": "erpnext_connector.events.gameplan.project.on_update",
-# 		"on_cancel": "erpnext_connector.events.gameplan.project.on_cancel",
-# 		"on_trash": "erpnext_connector.events.gameplan.project.on_trash"
+# 		"on_update": "erpnext_connector.events.gameplan.project_events.on_update",
+# 		"on_cancel": "erpnext_connector.events.gameplan.project_events.on_cancel",
+# 		"on_trash": "erpnext_connector.events.gameplan.project_events.on_trash"
 # 	},
 # 	"GP Task": {
-# 		"on_update": "erpnext_connector.events.gameplan.task.on_update",
-# 		"on_cancel": "erpnext_connector.events.gameplan.task.on_cancel",
-# 		"on_trash": "erpnext_connector.events.gameplan.task.on_trash"
+# 		"on_update": "erpnext_connector.events.gameplan.task_events.on_update",
+# 		"on_cancel": "erpnext_connector.events.gameplan.task_events.on_cancel",
+# 		"on_trash": "erpnext_connector.events.gameplan.task_events.on_trash"
 # 	},
 # 	"HD Ticket": {
-# 		"on_update": "erpnext_connector.events.helpdesk.tickets.ticket.on_update",
-# 		"on_cancel": "erpnext_connector.events.helpdesk.tickets.ticket.on_cancel",
-# 		"on_trash": "erpnext_connector.events.helpdesk.tickets.ticket.on_trash"
+# 		"on_update": "erpnext_connector.events.helpdesk.tickets.ticket_events.on_update",
+# 		"on_cancel": "erpnext_connector.events.helpdesk.tickets.ticket_events.on_cancel",
+# 		"on_trash": "erpnext_connector.events.helpdesk.tickets.ticket_events.on_trash"
 # 	},
 
 # }
