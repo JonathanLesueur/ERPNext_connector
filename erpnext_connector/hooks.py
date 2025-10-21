@@ -28,6 +28,10 @@ doc_events = {
  		"on_update": "erpnext_connector.events.erpnext.projects.project_events.on_update"
     }
 }
+
+#update_website_context  = [
+#    "erpnext_connector.overrides.contexts.wiki.wiki_page.get_context"
+#]
 # 		"on_cancel": "erpnext_connector.events.erpnext.projects.project_events.on_cancel",
 # 		"on_trash": "erpnext_connector.events.erpnext.projects.project_events.on_trash"
 # 	},

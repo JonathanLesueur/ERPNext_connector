@@ -1,7 +1,3 @@
-erpnext_fields = [
-
-]
-
 drive_fields = [
     {
         "fieldname": "custom_drive",
@@ -30,29 +26,12 @@ drive_fields = [
     }
 ]
 
-helpdesk_fields = []
+erpnext_fields = [
 
-lms_fields = []
+]
 
-gameplan_fields = []
+gameplan_fields = [
 
-wiki_fields = [
-    {
-        "fieldname": "custom_wiki",
-        "label": "Wiki",
-        "fieldtype": "Tab Break",
-        "dt": "Project",
-        "insert_after": "custom_create_drive_space",
-        "application": "erpnext"
-    },
-    {
-        "fieldname": "custom_create_wiki_space",
-        "label": "Create Wiki Space",
-        "fieldtype": "Check",
-        "dt": "Project",
-        "insert_after": "wiki_tab",
-        "application": "erpnext"
-    }
 ]
 
 gitlab_fields = [
@@ -74,3 +53,31 @@ gitlab_fields = [
         "application": "erpnext"
     }
 ]
+
+helpdesk_fields = [
+
+]
+
+lms_fields = [
+
+]
+
+wiki_fields = [
+    {
+        "fieldname": "custom_wiki",
+        "label": "Wiki",
+        "fieldtype": "Tab Break",
+        "dt": "Project",
+        "insert_after": "custom_create_drive_space",
+        "application": "erpnext"
+    },
+    {
+        "fieldname": "custom_create_wiki_space",
+        "label": "Create Wiki Space",
+        "fieldtype": "Check",
+        "dt": "Project",
+        "insert_after": "wiki_tab",
+        "application": "erpnext"
+    }
+]
+
